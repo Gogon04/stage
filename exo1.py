@@ -1,5 +1,5 @@
 
-ch = "Véronique" 
+ch = "Veronique" 
 cr = "*"
 lc = len(ch)	
 nch = ch[0]	
