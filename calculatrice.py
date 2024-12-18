@@ -31,5 +31,5 @@ print(n)
 for p in chiffres :
     q+=1
 for z in opérateur :
-    g+=1
-    
+    g+=1   
+
