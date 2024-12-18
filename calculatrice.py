@@ -1,35 +1,34 @@
-a = int(input("Entrer un premier nombre A:"))
-c = input("Entrer un premier opérateur ")
-b = int(input("Entrer un second nombre B:"))
-f = input("Entrer un second opérateur ")
-e = int(input("Entrer un troisième nombre C: "))
-d =0
-q = 0
-g = 0
-n = 0
-total = [ a,b,c,e,f ]
-chiffres = [a,b,e]
-opérateur = [c,f]
+def calculer(expression):
+    try:
+        nombres = []
+        operateurs = []
+        
+        # Récupérer les entrées utilisateur
+        nombres.append(int(input("Premier nombre : ")))
+        operateurs.append(input("Premier opérateur (+,-,*,/) : "))
+        nombres.append(int(input("Deuxième nombre : ")))
+        operateurs.append(input("Deuxième opérateur (+,-,*,/) : "))
+        nombres.append(int(input("Troisième nombre : ")))
+        
+        # Vérifier les opérateurs
+        for op in operateurs:
+            if op not in '+-*/':
+                raise ValueError("Opérateur invalide")
+        
+        # Calculer le résultat
+        resultat = nombres[0]
+        for i in range(len(operateurs)):
+            if operateurs[i] == '/' and nombres[i + 1] == 0:
+                raise ValueError("Division par zéro impossible")
+            resultat = eval(f"{resultat}{operateurs[i]}{nombres[i + 1]}")
+            
+        return resultat
+        
+    except ValueError as e:
+        return f"Erreur : {e}"
+    except Exception as e:
+        return f"Erreur inattendue : {e}"
 
-if c == '+':
-    d = a + b 
-elif c == '-':
-    d = a - b
-elif c == '*':
-    d = a * b 
-elif c == '/':
-    d = a / b
-if f == '+' :
-    n = d + e
-elif f == '-':
-    n = d - e
-elif f == '/':
-    n = d / e
-elif f == '*':
-    n = d*e
-print(n)   
-for p in chiffres :
-    q+=1
-for z in opérateur :
-    g+=1   
-
+# Exécution du programme
+if __name__ == "__main__":
+    print(f"Résultat : {calculer('')}")
